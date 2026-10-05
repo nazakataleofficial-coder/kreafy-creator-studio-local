@@ -1,0 +1,48 @@
+# dependencies/build
+node_modules/
+dist/
+build/
+out/
+.next/
+coverage/
+.cache/
+.tmp/
+temp/
+
+# environment/secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# local creator data
+projects/
+workspace/
+user-data/
+outputs/
+exports/
+generated/
+assets-local/
+*.sqlite
+*.sqlite3
+*.db
+
+# models/media/caches
+models/
+checkpoints/
+*.ckpt
+*.safetensors
+*.onnx
+*.pt
+*.pth
+
+# logs
+*.log
+logs/
