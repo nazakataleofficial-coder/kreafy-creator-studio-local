@@ -34,3 +34,6 @@ Secrets belong in OS-appropriate secure storage or an explicitly approved local 
 
 ## Reliability
 Operations that can be retried need stable IDs/idempotency thinking. App restart must not convert unknown interrupted jobs into false successes; recover them into an explicit recoverable/interrupted state or normalized failure according to implementation design.
+
+## Future Pro Reel boundary
+`docs/PRO-REEL-ENGINE.md` defines a future specialist media pipeline. It must reuse Project, Asset, job/queue/history, Preset and Export concepts rather than create a disconnected product silo. Raw2Reel's technical RenderPlan is the base; the Pro Reel layer adds a versioned CreativeRenderPlan for editorial events. Paid/cloud capabilities remain optional adapters and must never become hidden core dependencies.
