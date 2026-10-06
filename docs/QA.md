@@ -22,3 +22,6 @@
 
 ## Release gate
 A release candidate requires a clean-machine smoke test, migration/backup test, representative large batch test, accessibility keyboard pass and documented known limitations.
+
+## Future Pro Reel quality gate
+The Pro Reel milestone additionally requires the real long-video end-to-end acceptance test in `docs/PRO-REEL-ENGINE.md`. Completion cannot be inferred from unit tests or a demo render. Verify multiple candidate clips, free-core processing, synchronized playable outputs, creative typography/motion, safe masking fallback, editable-event rerender, restart/recovery, provenance and manifests/QC.
