@@ -26,3 +26,6 @@ Keyboard-accessible core actions, visible focus, labels/tooltips where icons are
 
 ## Performance perception
 Large libraries/batches need virtualization/pagination where measured necessary. Never fake completion percentages; indeterminate progress is better than invented precision.
+
+## Future Long Video -> Pro Reels UX
+When its milestone is active, expose a dashboard tool named **Long Video -> Pro Reels** with the primary flow: Import -> Analyze -> Suggested Clips -> Style -> Create Pro Reels -> Review -> Export. Suggested clips show source timestamps and explainable evidence, never fabricated viral scores. Review includes a simplified editable event timeline while advanced controls remain collapsible. See `docs/PRO-REEL-ENGINE.md`.
