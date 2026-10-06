@@ -39,3 +39,8 @@ Installer/update strategy, migration/backups, diagnostics, release checklist.
 Exit: clean-machine install and upgrade/recovery tests pass.
 
 Anything beyond M8 requires a new approved spec.
+
+## Approved post-M8 specialist milestone — Pro Reel Engine
+Not active during M0–M8. When explicitly activated, implement `docs/PRO-REEL-ENGINE.md` on top of the Raw2Reel foundation and shared Creator Studio infrastructure.
+
+Exit: a real long-form source produces multiple selected, locally processed Pro Reels; creative decisions are inspectable/editable; free-core acceptance, recovery, manifests and QC pass end to end.
