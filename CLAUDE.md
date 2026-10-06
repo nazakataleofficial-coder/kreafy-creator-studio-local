@@ -34,3 +34,6 @@ Do not rewrite architecture because a new pattern looks fashionable. Do not inst
 
 ## Completion report
 At the end of a task report: changed files, tests run, results, known limitations, and exact next milestone/task.
+
+## Specialist specs
+Do not read/build specialist future engines merely because their docs exist. When the **Pro Reel Engine** milestone is explicitly active, `docs/PRO-REEL-ENGINE.md` and the Raw2Reel master specification/reference become mandatory startup reading. Preserve the zero-paid-API core and do not declare completion until its real long-video end-to-end acceptance test passes.
