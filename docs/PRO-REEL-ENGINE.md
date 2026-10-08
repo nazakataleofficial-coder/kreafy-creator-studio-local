@@ -267,3 +267,39 @@ Reuse shared project, asset, queue, history, preset and export infrastructure in
 Done means the core works without paid APIs, real long-video input produces multiple real reels, creative decisions are inspectable/editable, output survives restart, legal/provenance rules are honored, and end-to-end acceptance passes.
 
 A beautiful UI, unit tests, or a rendered demo alone is not completion.
+
+## 18. Reference editor learnings and integration research (not an active milestone)
+
+This section records engineering input from the **separate existing Kreafy Studio** and the inspected **Raw2Reel Phase-0 archive**. Neither is the new Creator Studio implementation. Detailed non-sensitive reference notes are in `EXISTING-STUDIO-LEARNINGS.md`.
+
+### Useful existing Studio editor patterns
+
+- A storyboard/timeline with per-scene motion, per-boundary transitions, captions, background audio, media handoff and local project autosave is a viable interaction **reference**, not a source-code migration plan.
+- Its browser-based FFmpeg renderer includes single-graph and multi-part execution, interruption handling, persisted checkpoints and tests **written to compare** output frames/timing between render paths. Treat these as patterns to investigate; test presence is **not** an independently verified passing result.
+- The reference renderer has a 720p-class ceiling and browser/WebAssembly memory constraints. Do **not** inherit its maximum scene count, presets, transition randomness or output ceiling as goals for Pro Reels.
+
+### Separate planning layers
+
+1. **Raw2Reel technical RenderPlan:** decoding, analysis, transcript/word timing, cuts, crop, cleaned audio, source mapping and base QC.
+2. **CreativeRenderPlan:** editorial meaning, visual/text/motion/audio events, rationales, style tokens, assets, legal provenance and fallbacks.
+3. **Renderer adapter:** resolves one frozen plan to deterministic output using a proven engine. Native FFmpeg is a local-first candidate; browser FFmpeg and HyperFrames should be evaluated only for specific benefits.
+4. **Review and recovery:** simplified editable event timeline, validated chunk checkpoints, correction/re-render, final media QC and export manifests.
+
+The existing Studio's image-to-video montage editor is **not** the same as automatically selecting and creatively editing real talking-head/podcast source clips. Reuse its **lessons**, not its completion claims.
+
+### Raw2Reel source and test truth
+
+The reviewed Raw2Reel Phase-0 archive includes a FastAPI/Python/FFmpeg processing scaffold and an exported video, but its recorded acceptance status was **FAIL**: ASR text and subtitle outputs were placeholders, word-timed captions were not implemented, and the real raw-video end-to-end quality gate was not met. Archived self-reports were **not rerun** in this review. Before Pro Reel integration, fix/verify transcription, timed captions, synchronized export and actual QC on representative real source footage.
+
+### Renderer research gate — FFmpeg, HyperFrames and hybrid
+
+Before choosing a motion/render stack, inspect HyperFrames' actual current source, license, runtime dependencies and export APIs. Prototype **one** measurable shot/text/effect rather than promising compatibility. Benchmark native FFmpeg, browser ffmpeg.wasm and any hybrid on consistent inputs, measuring wall time, peak memory, frame count, A/V sync, output resolution, font/mask fidelity, determinism and restart behavior.
+
+Only adopt a component when it provides reproducible value and is licensing/deployment compatible. Keep an FFmpeg-only fallback for unsupported effects; reject silent quality downgrades and **do not make any paid API or GPU cloud a requirement** of the free core. On CPU-limited machines, warn or omit optional heavy effects with an explicit safe fallback.
+
+### Checkpoint and editorial correctness gates
+
+- Chunk boundaries must preserve source timebase and consistent frame/audio ownership. Verify crossfades, frozen frames, captions, BGM/SFX, source trims and any masked typography across boundaries. Do not assume joining chunks preserves frame or sample accuracy.
+- Cache analysis (transcript, scenes, face tracking, optional masks) by source/settings/model fingerprint; validate cache before reuse. Keep source immutable.
+- A user-editable event must produce a predictable rerender; partial rerender is allowed only if frame/audio equivalence and safe boundary tests prove it correct.
+- No reference project, demo, documentation claim, successful download or old test log can waive the **20+ minute real-source end-to-end acceptance test** in Section 15. Preserve `FAIL` until genuine evidence demonstrates all required stages.
